@@ -1,10 +1,20 @@
 import './App.css';
 import * as React from 'react';
 import logo from './cdlogo.png';
-import Grid from '@mui/material/Grid';
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
-import { Box } from '@mui/system';
-
+import {
+  FormControl,
+  IconButton,
+  InputAdornment,
+  InputLabel,
+  MenuItem,
+  Select,
+  Input,
+  Grid,
+  TextField,
+  styled,
+  Divider
+} from '@mui/material';
+import { Visibility, VisibilityOff } from '@mui/icons-material'
 
 
 function App() {
@@ -20,7 +30,7 @@ function App() {
   });
 
   const handleChangePassword = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value});
+    setValues({ ...values, [prop]: event.target.value });
   };
 
   const handleClickShowPassword = () => {
@@ -33,6 +43,14 @@ function App() {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   }
+
+  const Root = styled('div')(({ theme }) => ({
+    width: '100%',
+    ...theme.typography.body2,
+    '& > :not(style) + not(style)' : {
+      marginTop: theme.spacing(2),
+    },
+  }));
 
   return (
     <>
@@ -87,9 +105,8 @@ function App() {
               <label for="birthday">Date of Birth:</label>
             </div>
           </div>
-          <Box
-            direction="row"
-            sx={{ minWidth: 120 }}
+          <Grid
+            container
           >
             <FormControl fullWidth>
               <InputLabel id="productType">Select Product Type</InputLabel>
@@ -107,19 +124,82 @@ function App() {
                 <MenuItem value="cultUpgrade">Cultivation Upgrage</MenuItem>
               </Select>
             </FormControl>
-          </Box>
-          <Box
-            direction="row"
-          >
-            <FormControl sx={{ m: 1, width: '25ch' }} variant="standard">
-              <InputLabel htmlFor="standard-password">Password</InputLabel>
-              <Input 
-                id='password'
-                type={values.showPassword ? 'text' : 'password'}
-                value={values.password}
+          </Grid>
+          <Grid container spacing={2}>
+            <Grid item xs={6}>
+              <FormControl sx={{ m: 1, width: '50ch' }}>
+                <TextField
+                  id='licenseNum'
+                  label='If renewal, license number:'
+                  variant='standard'
+                />
+              </FormControl>
+            </Grid>
+
+            <Grid item xs={6}>
+              <FormControl sx={{ m: 1, width: '50ch' }} variant="standard">
+                <InputLabel htmlFor="standard-password">Password</InputLabel>
+                <Input
+                  id='password'
+                  type={values.showPassword ? 'text' : 'password'}
+                  value={values.password}
+                  onChange={handleChangePassword('password')}
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                      >
+                        {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    </InputAdornment>
+                  }
+                />
+              </FormControl>
+            </Grid>
+          </Grid>
+          <Root>
+            <Divider>ADDRESS</Divider>
+          </Root>
+          <Grid container>
+            <Grid item xs={12}>
+              <FormControl sx={{width:'100ch'}}>
+              <TextField
+                id="street"
+                helperText="Street Address"
+                variant="standard"
               />
-            </FormControl>
-          </Box>
+              </FormControl>
+            </Grid>
+            <Grid item xs={6}>
+              <FormControl sx={{ width: '50ch'}}>
+              <TextField 
+                id="city"
+                helperText="City"
+                variant="standard"
+              />
+              </FormControl>
+            </Grid>
+            <Grid item xs={6}>
+              <FormControl sx={{ width: '50ch'}}>
+              <TextField 
+                id="state"
+                helperText="state"
+                variant="standard"
+              />
+              </FormControl>
+            </Grid>
+            <Grid item xs={6}>
+              <FormControl sx={{ width: '50ch'}}>
+              <TextField 
+                id="zipcode"
+                helperText="Zipcode"
+                variant="standard"
+              />
+              </FormControl>
+            </Grid>
+          </Grid>
         </form>
       </div>
     </>
