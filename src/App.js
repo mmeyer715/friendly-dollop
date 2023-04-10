@@ -1,7 +1,6 @@
 import './App.css';
 import * as React from 'react';
 import logo from './cdlogo.png';
-import { Uploader } from 'rsuite';
 import {
   FormControl,
   IconButton,
@@ -19,8 +18,10 @@ import {
   FormControlLabel,
   Radio,
   Typography,
+  Button
 } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material'
+import { Stack } from '@mui/system';
 
 
 function App() {
@@ -398,7 +399,7 @@ function App() {
         <Grid item xs={12}>
           <FormControl fullWidth>
             <TextField
-              id="mailStreet"
+              id="cultStreet"
               label="Cultivation Address"
               helperText="Street Address"
               variant="standard"
@@ -408,7 +409,7 @@ function App() {
         <Grid item xs={6}>
           <FormControl fullWidth>
             <TextField
-              id="mailCity"
+              id="cultCity"
               helperText="City"
               variant="standard"
             />
@@ -417,7 +418,7 @@ function App() {
         <Grid item xs={6}>
           <FormControl fullWidth >
             <TextField
-              id="mailState"
+              id="cultState"
               helperText="state"
               variant="standard"
             />
@@ -426,7 +427,7 @@ function App() {
         <Grid item xs={6}>
           <FormControl fullWidth>
             <TextField
-              id="mailZipcode"
+              id="cultZipcode"
               helperText="Zipcode"
               variant="standard"
             />
@@ -442,15 +443,34 @@ function App() {
         <Grid item xs={6}>
           <FormControl fullWidth>
             <FormLabel sx={{ mb: 3 }} htmlFor='digitalPhoto'>Digital Photo</FormLabel>
-            <Uploader action="//jsonplaceholder.typicode.com/posts/" />
+            <Stack direction="row" spacing={2}>
+              <Button variant="contained" component="label">
+                Upload
+                <input hidden accept="image/*" multiple type="file" />
+              </Button>
+            </Stack>
           </FormControl>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={6} spacing={2} >
           <FormControl fullWidth>
             <FormLabel sx={{ mb: 3 }} htmlFor='governmentPhoto'>Government Issued Photo Identification Card</FormLabel>
-            <Uploader action="//jsonplaceholder.typicode.com/posts/" />
+            <Stack direction="row" spacing={2}>
+              <Button variant="contained" component="label">
+                Upload
+                <input hidden accept="image/*" multiple type="file" />
+              </Button>
+            </Stack>
           </FormControl>
         </Grid>
+      </Grid>
+      <Grid container direction="column" justifyContent="center" alignItems="center" className='subButton'>
+        <Typography variant='h6'>Before submitting, please review all answers for accuracy. Thank you!</Typography>
+        <Stack>
+
+          <Button variant="contained" href="#contained-buttons">
+            Submit
+          </Button>
+        </Stack>
       </Grid>
     </>
   );
