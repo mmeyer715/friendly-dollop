@@ -1,6 +1,6 @@
 import './App.css';
 import * as React from 'react';
-import logo from './cdlogo.png';
+import logo from './assets/cdlogo.png';
 import {
   FormControl,
   IconButton,
@@ -149,7 +149,7 @@ function App() {
 
         <Grid item xs={12}>
           <FormControl fullWidth>
-            <InputLabel id="productType">Select Product Type</InputLabel>
+            {/* <InputLabel id="productType">Select Product Type</InputLabel> */}
             <Select
               labelId="productLabel"
               id="productType"
@@ -227,7 +227,7 @@ function App() {
           <FormControl fullWidth >
             <TextField
               id="state"
-              helperText="state"
+              helperText="State"
               variant="standard"
             />
           </FormControl>
@@ -311,11 +311,12 @@ function App() {
         </Grid>
         <Grid item xs={6}>
           <FormControl fullWidth>
-            <FormLabel id="lowIncome">Are you currently eligible for any Missouri low-income assistance programs?</FormLabel>
+            <FormLabel>Are you currently eligible for any Missouri low-income assistance programs?</FormLabel>
             <RadioGroup
               row
               aria-labelledby='demo-radio-buttons-group-label'
               name='lowIncomeButtons'
+              id="lowIncome"
             >
               <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
               <FormControlLabel value="No" control={<Radio />} label="No" />
@@ -329,11 +330,12 @@ function App() {
         </Grid>
         <Grid item xs={6}>
           <FormControl fullWidth>
-            <FormLabel id="cultivation">Do you intend to cultivate medical marijuana?</FormLabel>
+            <FormLabel>Do you intend to cultivate medical marijuana?</FormLabel>
             <RadioGroup
               row
               aria-labelledby='demo-radio-buttons-group-label'
               name='cultButtons'
+              id="cultivation"
             >
               <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
               <FormControlLabel value="No" control={<Radio />} label="No" />
@@ -349,11 +351,12 @@ function App() {
         </Grid>
         <Grid item xs={6}>
           <FormControl fullWidth>
-            <FormLabel id="cultAccess">Do you agree to immediately make available access to the patient cultivation facility upon request from the department?</FormLabel>
+            <FormLabel>Do you agree to immediately make available access to the patient cultivation facility upon request from the department?</FormLabel>
             <RadioGroup
               row
               aria-labelledby='demo-radio-buttons-group-label'
               name='cultAccessButtons'
+              id="cultAccess"
             >
               <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
               <FormControlLabel value="No" control={<Radio />} label="No" />
@@ -362,11 +365,12 @@ function App() {
         </Grid>
         <Grid item xs={6}>
           <FormControl fullWidth>
-            <FormLabel id="cultShared">Will this cultivation facility be shared?</FormLabel>
+            <FormLabel>Will this cultivation facility be shared?</FormLabel>
             <RadioGroup
               row
               aria-labelledby='demo-radio-buttons-group-label'
               name='cultSharedButtons'
+              id="cultShared"
             >
               <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
               <FormControlLabel value="No" control={<Radio />} label="No" />
@@ -381,11 +385,12 @@ function App() {
         </Grid>
         <Grid item xs={6}>
           <FormControl fullWidth>
-            <FormLabel id="trueInfo">Do you attest that the information provided in this application is true and correct?</FormLabel>
+            <FormLabel>Do you attest that the information provided in this application is true and correct?</FormLabel>
             <RadioGroup
               row
               aria-labelledby='demo-radio-buttons-group-label'
               name='trueButtons'
+              id="trueInfo"
             >
               <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
               <FormControlLabel value="No" control={<Radio />} label="No" />
@@ -446,7 +451,7 @@ function App() {
             <Stack direction="row" spacing={2}>
               <Button variant="contained" component="label">
                 Upload
-                <input hidden accept="image/*" multiple type="file" />
+                <input hidden accept="image/*" multiple type="file" id="digitalPhoto" />
               </Button>
             </Stack>
           </FormControl>
@@ -457,7 +462,7 @@ function App() {
             <Stack direction="row" spacing={2}>
               <Button variant="contained" component="label">
                 Upload
-                <input hidden accept="image/*" multiple type="file" />
+                <input hidden accept="image/*" multiple type="file" id="governmentId" />
               </Button>
             </Stack>
           </FormControl>
